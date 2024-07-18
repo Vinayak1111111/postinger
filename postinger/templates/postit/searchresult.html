@@ -1,23 +1,23 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    post list Page
+    Search Results
 {% endblock  %}
 
 {% block content %}
-    {% comment %} <h3 class="text-center mt-4 ">Welcome to post list page !</h3> {% endcomment %}
+    {% comment %} <h3 class="text-center mt-4 ">Welcome to search result page !</h3> {% endcomment %}
 
     <a class="btn btn-primary my-2" href="{% url "create_post" %}">
         Create Post
     </a>
 
     <div class="container row gap-3 mb-2 d-flex justify-content-center">
-        {% for i in post %}
+        {% for i in allpost %}
         <div class="card mt-2 " style="width: 16.3rem; height : 22rem;">
             <img src="{{i.image.url}}" class="card-img-top d-flex justify-content-center" style="width: 233px; height : 160px;" alt="no image">
             <div class="card-body ">
-              <h5 class="card-title">username : {{i.user.username}}</h5>
-              <h6 class="card-text">Caption : {{i.caption}}</h6>
+              <h5 class="card-title">{{i.user.username}}</h5>
+              <p class="card-text">{{i.caption}}</p>
               {% if i.user == user %}
               <a href="{% url "edit_post" i.id %}" class="btn btn-primary ms-2">Edit</a>
               <a href="{% url "delete_post" i.id %}" class="btn btn-danger ms-5">Delete</a>

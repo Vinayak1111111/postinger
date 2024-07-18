@@ -65,3 +65,12 @@ def register(request):
     else:
         form = UserRegistrationForm() 
     return render(request, 'registration/register.html', {'form':form})
+
+
+def search(request):
+    query = request.GET['query']
+    # allpost = posts.objects.all()
+    allpost = posts.objects.filter(caption__icontains = query)
+    # post = posts.objects.all().order_by('-created_at')
+    
+    return render(request, 'postit/searchresult.html',{'allpost':allpost})
