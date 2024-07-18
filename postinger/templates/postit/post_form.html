@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    post form page
+{% endblock  %}
+
+{% block content %}
+    <h2 class="text-center mt-4 ">Welcome to post form page !</h2>
+
+    <h4>
+        {% if form.instance.pk %}
+        Edit form
+        {% else %}
+        Create Post
+        {% endif %}
+        <form  method="post" enctype="multipart/form-data" class="form" >
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-warning" type="submit">
+                Submit
+            </button>
+        </form>
+        <a href="{% url "post_list" %}">
+            back to post list
+        </a>
+    </h4>
+
+{% endblock  %} 

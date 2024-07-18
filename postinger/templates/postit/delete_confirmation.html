@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    detele confirmation page
+{% endblock  %}
+
+{% block content %}
+    <h3 class="text-center mt-4 ">Are you sure, you want to delete this post?</h3>
+    <form method='post'>
+        {% csrf_token %}
+        <button class="btn btn-danger">Delete</button>
+        <a class="btn btn-success" href="{% url "post_list" %}">Back</a>
+    </form>
+{% endblock  %} 
