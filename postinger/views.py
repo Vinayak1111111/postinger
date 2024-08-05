@@ -3,9 +3,13 @@ from .models import posts
 from .forms import postform, UserRegistrationForm
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.contrib.auth import login
 
 # Create your views here.
+# def custom_logout_view(request):
+#     logout(request)
+#     return redirect('/admin/login/')
 
 def home(request):
     return render(request, 'postit/home.html')

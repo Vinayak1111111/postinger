@@ -19,9 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.urls import views as auth_views
-
+from django.views.generic import RedirectView
+from .views import custom_logout_view
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('logout/', custom_logout_view, name='logout'),
     path('postinger/', include('postinger.urls')),
     # path('', include('postinger.urls')),
     path('accounts/', include('django.contrib.auth.urls')),

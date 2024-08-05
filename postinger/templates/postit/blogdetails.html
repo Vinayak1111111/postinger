@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    post details page
+{% endblock  %}
+
+{% block content %}
+    {% comment %} <h3 class="text-center mt-4 ">Welcome to post list page !</h3> {% endcomment %}
+
+    <h1 class="text-center">Post details</h1>
+    <a href="{% url "post_list" %}">
+        back
+    </a>
+    <div class="container row  mb-2  d-flex justify-content-center">
+        
+        <div class="card mt-2 pb-5 d-flex justify-content-center" style="width: 40rem; height : 40rem;">
+            <img src="{{post.image.url}}" class="card-img-top "  alt="no image" style="border-radius: 5px">
+            <div class="card-body ">
+              <h5 class="card-title">username : {{post.user.username}}</h5>
+              <h6 class="card-text">Caption : {{post.caption}}</h6>
+              {% if post.user == user %}        
+                <a href="{% url "edit_post" post.id %}" class="btn btn-primary ms-2">Edit</a>
+                <a href="{% url "delete_post" post.id %}" class="btn btn-danger ms-5">Delete</a>
+              {% endif %}
+            </div>
+          </div>
+     
+    </div>
+
+{% endblock  %} 
