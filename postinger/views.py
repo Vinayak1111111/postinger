@@ -21,6 +21,11 @@ def post_list(request):
     post = posts.objects.all().order_by('-created_at')
     return render(request, 'postit/post_list.html', {'post':post})
 
+def post_details(request, post_id):
+    post = get_object_or_404(posts, pk=post_id)
+   
+    return render(request, 'postit/post_details.html', {'post':post})
+
 @login_required
 def create_post(request):
     if request.method == 'POST':

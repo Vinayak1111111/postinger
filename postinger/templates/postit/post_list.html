@@ -11,20 +11,28 @@
         Create Post
     </a>
 
-    <div class="container row gap-3 mb-2 d-flex justify-content-center">
-        {% for i in post %}
-        <div class="card mt-2 " style="width: 16.3rem; height : 22rem;">
-            <img src="{{i.image.url}}" class="card-img-top d-flex justify-content-center" style="width: 233px; height : 160px;" alt="no image">
-            <div class="card-body ">
-              <h5 class="card-title">username : {{i.user.username}}</h5>
-              <h6 class="card-text">Caption : {{i.caption}}</h6>
-              {% if i.user == user %}
-              <a href="{% url "edit_post" i.id %}" class="btn btn-primary ms-2">Edit</a>
-              <a href="{% url "delete_post" i.id %}" class="btn btn-danger ms-5">Delete</a>
-              {% endif %}
+    <div class="container">
+        <div class="row gap-1 mb-2 d-flex justify-content-center">
+            {% for i in post %}
+            <div class="col-md-3 mt-2 d-flex justify-content-center">
+                <a href="{% url "post_details" i.id %}">
+                    <div class="card" style="width: 16.3rem; height : 22rem;">
+                        <img src="{{i.image.url}}" class="card-img-top" style="width: 2558x; height : 160px;" alt="no image">
+                        <div class="card-body">
+                            {% comment %} <h1 class="text-center">{{i.id}}</h1> {% endcomment %}
+                            <h5 class="card-title">username : {{i.user.username}}</h5>
+                            {% comment %} <h6 class="card-text">Caption : {{i.caption}}</h6> {% endcomment %}
+                            {% comment %} {% if i.user == user %}
+                            <a href="{% url "edit_post" i.id %}" class="btn btn-primary ms-2">Edit</a>
+                            <a href="{% url "delete_post" i.id %}" class="btn btn-danger ms-5">Delete</a>
+                            {% endif %} {% endcomment %}
+                        </div>
+                    </div>
+                </a>
             </div>
-          </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
+    
 
 {% endblock  %} 
